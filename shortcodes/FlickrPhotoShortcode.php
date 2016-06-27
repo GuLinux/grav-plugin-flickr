@@ -1,7 +1,8 @@
 <?php
 
 namespace Grav\Plugin\Shortcodes;
-require_once(__DIR__.'/../classes/FlickrAPI.php');
+require_once(__DIR__.'/../classes/FlickrCommons.php');
+use Grav\Plugin\Flickr\FlickrCommons;
 use Grav\Common\Utils;
 use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 use Grav\Plugin\Flickr\FlickrAPI;
@@ -16,7 +17,7 @@ class FlickrPhotoShortcode extends Shortcode
             $content = $sc->getContent();
             $id = $sc->getParameter('id', '');
             $api = new FlickrAPI();
-            $params = array_merge(['display-format-photo' => 's', 'display-format-photo-lightbox' => 'z'], $sc->getParameters());
+            $params = array_merge(FlickrCommons::DEFAULT_PARAMS, $sc->getParameters());
             try {
                 $photo = $api->photo($id );
                 $output = $this->twig->processTemplate('partials/flickr-photo.html.twig', [

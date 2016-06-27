@@ -1,5 +1,4 @@
- <div id="lightbox-{{ photo.id() }}" class="flickr-lightbox">
+ <figure id="lightbox-{{ photo.id() }}" class="flickr-lightbox">
+    <figcaption><h4>{{ photo.title() }}</h4> <span><a href="{{ photo.url('o') }}" target='_blank'>Original version</a></span></figcaption>
     <img src="{{ photo.url(params['display-format-photo-lightbox']) }}">
-    <figcaption>{{ photo.title() }}</figcaption>
-    <span><a href="{{ photo.url('o') }}" target='_blank'>Original version</a></span>
-</div>
+</figure>

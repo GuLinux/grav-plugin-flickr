@@ -1,6 +1,8 @@
 <div class="flickr flickr-photoset">
-    <h2 class="flickr-photoset-title">{{ photoset.title() }}</h2>
-    <h3 class="flickr-photoset-description">{{ photoset.description() }}</h3>
+    <{{params['photoset-title-tag']}} class="flickr-photoset-title">{{ photoset.title() }}</{{params['photoset-title-tag']}}>
+    {% if photoset.description() %}
+    <{{params['photoset-description-tag']}} class="flickr-photoset-description">{{ photoset.description() }}</{{params['photoset-description-tag']}}>
+    {% endif %}
     <section data-featherlight-gallery data-featherlight-filter=".flickr-photo">
     {% for photo in photoset.photos() %}
         {% include 'partials/flickr-photo.html.twig' %}

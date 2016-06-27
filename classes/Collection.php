@@ -17,7 +17,6 @@ class Collection
         $this->info = $tree;
         $this->collections = [];
         $this->sets = [];
-        dump($tree);
         if(is_array($tree['collection'])) {
             foreach($tree['collection'] as $collection) {
                 $this->collections[] = new Collection($collection, $api);
@@ -28,8 +27,6 @@ class Collection
                 $this->sets[] = $api->photoset($set['id'], []);
             }
         }
-        dump($this->collections);
-        dump($this->sets);
     }
 
     
