@@ -16,10 +16,12 @@ class FlickrPhotosetShortcode extends Shortcode
             $content = $sc->getContent();
             $id = $sc->getParameter('id', '');
             $api = new FlickrAPI();
+            $params = array_merge(['display-format-photo' => 's', 'display-format-photo-lightbox' => 'z'], $sc->getParameters());
             try {
-                $photoset = $api->photoset($id, $sc->getParameters() );
+                $photoset = $api->photoset($id, $params );
                 $output = $this->twig->processTemplate('partials/flickr-photoset.html.twig', [
                     'photoset' => $photoset,
+                    'params' => $params,
                 ]);
 
                 return $output;
