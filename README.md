@@ -34,7 +34,7 @@ The id can usually be found on the url of the resource you are currently browsin
 
 ### Collections
 
-    [flickr-collection id=139636693-72157668802262691
+    [flickr-collection id=139636693-72157668802262691]
     
 
 Advanced Options
