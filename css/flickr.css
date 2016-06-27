@@ -1,0 +1,20 @@
+.flickr-lightbox {
+    display: none;
+    text-align: center;
+}
+
+.flickr-photo {
+    display: inline-block;
+    min-width: 150px;
+    text-align: center;
+    padding: 20px;
+}
+
+.flickr-photo figcaption {
+    font-size: smaller;
+}
+
+.flickr-photoset-title {
+}
+.flickr-photoset-description {
+}

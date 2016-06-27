@@ -1,0 +1,40 @@
+name: Flickr
+version: 1.0.0
+description: "This plugin provides flickr shortcodes for images and galleries"
+icon: flickr
+author:
+  name: Marco Gulino
+  email: marco@gulinux.net
+  url: http://gulinux.net
+homepage: https://github.com/GuLinux/grav-plugin-flickr
+keywords: flickr, media
+#bugs: https://github.com/getgrav/grav-plugin-shortcode-ui/issues
+license: GPL3
+
+dependencies:
+  - shortcode-core
+  - featherlight
+
+form:
+  validation: strict
+  fields:
+    enabled:
+      type: toggle
+      label: Plugin Enabled
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    flickr_api_key:
+      type: text
+      size: medium
+      label: Flickr API Key
+    flickr_api_secret:
+      type: text
+      size: medium
+      label: Flickr API Key
+
