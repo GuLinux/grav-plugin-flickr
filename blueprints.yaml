@@ -37,4 +37,8 @@ form:
       type: text
       size: medium
       label: Flickr API Key
+    flickr_user_id:
+      type: text
+      size: medium
+      label: Flickr User ID
 

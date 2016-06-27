@@ -18,11 +18,11 @@ class Photo
     }
 
     public function title() {
-        return $this->info['title'];
+        return $this->content($this->info['title']);
     }
     
     public function datetaken() {
-        return $this->info['datetaken'];
+        return $this->content($this->info['datetaken']);
     }
     
     public function url($format) {
@@ -33,6 +33,10 @@ class Photo
             return 'https://farm' . $this->info['farm'] . '.staticflickr.com/' . $this->info['server'] . '/' . $this->info['id'] . '_' . $this->info['secret'] . '_' . $format . '.jpg';
         }
         return 'https://farm' . $this->info['farm'] . '.staticflickr.com/' . $this->info['server'] . '/' . $this->info['id'] . '_' . $this->info['secret'] . '.jpg';
+    }
+    
+    private function content($val) {
+        return is_array($val) ? $val['_content'] : $val;
     }
 }
  

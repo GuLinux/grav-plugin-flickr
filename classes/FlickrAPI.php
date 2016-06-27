@@ -2,9 +2,11 @@
 
 namespace Grav\Plugin\Flickr;
 require_once(__DIR__.'/Photoset.php');
+require_once(__DIR__.'/Collection.php');
 
 use Grav\Common\Grav;
 use Grav\Plugin\Flickr\Photoset;
+use Grav\Plugin\Flickr\Collection;
 use Grav\Common\GPM\Response;
 use Grav\Common\Cache;
 
@@ -19,6 +21,7 @@ class FlickrAPI
 {
     protected $key;
     protected $secret;
+    protected $user_id;
     protected $grav;
     protected $config;
     protected $cache;
@@ -32,26 +35,41 @@ class FlickrAPI
         $this->config = $this->grav['config'];
         $this->key = $this->config->get('plugins.flickr.flickr_api_key');
         $this->secret = $this->config->get('plugins.flickr.flickr_api_secret');        
+        $this->user_id = $this->config->get('plugins.flickr.flickr_user_id');        
         $this->cache = new Cache($this->grav);
     }
 
-    /**
-     * do some work
-     */
     public function photoset($id, $params)
     {
         $info = $this->request( ['method' => 'flickr.photosets.getInfo', 'photoset_id' => $id ])['photoset'];
         $get_photos_params = array_merge(
             [ "method" => "flickr.photosets.getPhotos", "photoset_id" => $id, 'user_id' => $info['owner'], 'extras' => 
-                'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_m, url_o' ],
+                'license,date_upload,date_taken,owner_name,icon_server,original_format,last_update,geo,tags,machine_tags,views,media' ],
             $this->get_params($params, ['page', 'per_page', 'privacy_filter', 'media']));
         
         $photos = $this->request( $get_photos_params )['photoset'];
         return new Photoset($info, $photos);
     }
     
+    public function photo($id)
+    {
+        $info = $this->request( ['method' => 'flickr.photos.getInfo', 'photo_id' => $id ])['photo'];        
+        return new Photo($info);
+    }
+    
+    public function collection($id)
+    {
+        $info = $this->request( ['method' => 'flickr.collections.getTree', 'collection_id' => $id ])['collections'];
+        foreach($info['collection'] as $collection) {
+            if( ! strpos($collection['id'], $id) ) {
+                return new Collection($collection, $this);
+            }
+        }
+        return null; // TODO
+    }
+    
     private function request($params) {
-        $url = 'https://api.flickr.com/services/rest/?' . http_build_query(array_merge($params, ['api_key' => $this->key, 'format' => 'php_serial']));
+        $url = 'https://api.flickr.com/services/rest/?' . http_build_query(array_merge($params, ['api_key' => $this->key, 'format' => 'php_serial', 'user_id' => $this->user_id]));
         $obj = $this->cache->fetch($url);
         if($obj) {
             return $obj;

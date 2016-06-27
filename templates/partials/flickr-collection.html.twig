@@ -1,0 +1,10 @@
+<div class="flickr flickr-collection">
+<h2>{{ collection.title() }}</h2>
+<h3>{{ collection.description() }}</h3>
+{% for set in collection.sets() %}
+    {% include 'partials/flickr-photoset.html.twig' with {'photoset':set} %}
+{% endfor %}
+</div>
+{% for current in collection.collections() %}
+    {% include 'partials/flickr-collection.html.twig' with {'collection':current} %}
+{% endfor %}
