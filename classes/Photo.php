@@ -35,6 +35,14 @@ class Photo
         return 'https://farm' . $this->info['farm'] . '.staticflickr.com/' . $this->info['server'] . '/' . $this->info['id'] . '_' . $this->info['secret'] . '.jpg';
     }
     
+    public function flickrPage() {
+        return 'https://www.flickr.com/photos/' . $this->info['ownername'] . '/' . $this->info['id'];
+    }
+    
+    public function description() {
+        return $this->content($this->info['description']);
+    }
+    
     private function content($val) {
         return is_array($val) ? $val['_content'] : $val;
     }

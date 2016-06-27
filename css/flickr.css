@@ -18,3 +18,11 @@
 }
 .flickr-photoset-description {
 }
+
+.flickr-lightbox-links a{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.flickr-lightbox-title {
+/*     display: inline; */
+}

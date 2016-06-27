@@ -10,11 +10,13 @@ class Photoset
 {
     private $photos;
     private $info;
+    private $api;
     
-    public function __construct($info, $photos)
+    public function __construct($info, $photos, $api)
     {
         $this->info = $info;
         $this->photos = $photos;
+        $this->api = $api;
     }
 
     

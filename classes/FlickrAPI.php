@@ -44,17 +44,17 @@ class FlickrAPI
         $info = $this->request( ['method' => 'flickr.photosets.getInfo', 'photoset_id' => $id ])['photoset'];
         $get_photos_params = array_merge(
             [ "method" => "flickr.photosets.getPhotos", "photoset_id" => $id, 'user_id' => $info['owner'], 'extras' => 
-                'license,date_upload,date_taken,owner_name,icon_server,original_format,last_update,geo,tags,machine_tags,views,media' ],
+                'license,date_upload,date_taken,owner_name,icon_server,original_format,last_update,geo,tags,machine_tags,views,media,description' ],
             $this->get_params($params, ['page', 'per_page', 'privacy_filter', 'media']));
         
         $photos = $this->request( $get_photos_params )['photoset'];
-        return new Photoset($info, $photos);
+        return new Photoset($info, $photos, $this);
     }
     
     public function photo($id)
     {
         $info = $this->request( ['method' => 'flickr.photos.getInfo', 'photo_id' => $id ])['photo'];        
-        return new Photo($info);
+        return new Photo($info, $this);
     }
     
     public function collection($id)
