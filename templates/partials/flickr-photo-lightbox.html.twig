@@ -2,8 +2,8 @@
     <figcaption>
         <h4 class="flickr-lightbox-title">{{ photo.title() }}</h4>
         <div class="flickr-lightbox-links">
-            <a href="{{ photo.url('o') }}" target='_blank'>Original version</a>
-            <a href="{{ photo.flickrPage() }}" target='_blank'>Open in Flickr</a>
+            <a href="{{ photo.url('o') }}" target='_blank'><i class="fa fa-picture-o" aria-hidden="true"></i> Original version</a>
+            <a href="{{ photo.flickrPage() }}" target='_blank'><i class="fa fa-flickr" aria-hidden="true"></i> Open in Flickr</a>
         </div>
     </figcaption>
     <img src="{{ photo.url(params['display-format-photo-lightbox']) }}">
