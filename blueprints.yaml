@@ -8,8 +8,8 @@ author:
   url: http://gulinux.net
 homepage: https://github.com/GuLinux/grav-plugin-flickr
 keywords: flickr, media
-#bugs: https://github.com/getgrav/grav-plugin-shortcode-ui/issues
-license: GPL3
+bugs: https://github.com/GuLinux/grav-plugin-flickr/issues
+license: GPLv3
 
 dependencies:
   - shortcode-core
