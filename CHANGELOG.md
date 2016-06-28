@@ -1,3 +1,9 @@
+# v1.0.2
+## 28/06/2016
+
+1. [](#new)
+    * Fix cache duration validation in previous release
+
 # v1.0.1
 ## 28/06/2016
 
