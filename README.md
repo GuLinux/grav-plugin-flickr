@@ -46,13 +46,17 @@ This is a list for each shortcode.
  * flickr-photo:
    * `display-format-photo`: single letter, defining the image size to be displayed. Look [Flickr URL reference](https://www.flickr.com/services/api/misc.urls.html) for all possible values.
    * `display-format-photo-lightbox`: same values as the previous parameter, but used to define image size in the lightbox popup.
+   * `photo-class`: extra css classes for the main photo html tag.
+   * `photo-lightbox-class`: extra css classes for the main lightbox html tag.
  * flickr-photoset:
    * `photoset-title-tag`: HTML tag to use for the photoset title.
    * `photoset-description-tag`: HTML tag to use for the photoset description.
+   * `photoset-class`: extra css classes for the main photoset html tag.
    * All the parameters for **flickr-photo** are also accepted, to properly display child photos.
  * flickr-collection
    * `hide-empty-collections`: if set to `true`, skips title and description for collections without sets. Default `false`
    * `collection-title-tag`: HTML tag to use for the collection title.
    * `collection-description-tag`: HTML tag to use for the collection description.
+   * `collection-class`: extra css classes for the main collection html tag.
    * All the parameters for **flickr-photo** and **flickr-photoset** are also supported to properly display child photos and photosets.
    

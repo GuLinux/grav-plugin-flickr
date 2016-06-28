@@ -26,3 +26,7 @@
 .flickr-lightbox-title {
 /*     display: inline; */
 }
+
+.featherlight-next:hover span, .featherlight-previous:hover span {
+  text-shadow: 0 0 5px #111111;
+}
