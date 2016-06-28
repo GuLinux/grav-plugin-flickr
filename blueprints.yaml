@@ -50,7 +50,7 @@ form:
     flickr_cache_duration:
       type: text
       size: small
-      label: Flickr requests cache duration (seconds)
+      label: Flickr requests cache duration (seconds, 0 to disable caching)
       validate:
         required: true
         type: number
