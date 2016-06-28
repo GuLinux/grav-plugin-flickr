@@ -1,5 +1,5 @@
 {% if count(collection.sets()) > 0 or not params['hide-empty-collections'] %}
-<div class="flickr flickr-collection">
+<div class="flickr flickr-collection {{params['collection-class']}}">
 <{{params['collection-title-tag']}}>{{ collection.title() }}</{{params['collection-title-tag']}}>
 {% if collection.description() %}
 <{{params['collection-description-tag']}}>{{ collection.description() }}</{{params['collection-description-tag']}}>

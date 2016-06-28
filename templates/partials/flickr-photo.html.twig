@@ -1,4 +1,4 @@
-<a href="#" data-featherlight="#lightbox-{{ photo.id() }}" class="flickr-photo">
+<a href="#" data-featherlight="#lightbox-{{ photo.id() }}" class="flickr-photo {{params['photo-class']}}">
     <figure>
         <img src="{{ photo.url(params['display-format-photo']) }}">
         <figcaption>{{ photo.title() }}</figcaption>

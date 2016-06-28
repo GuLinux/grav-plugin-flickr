@@ -1,4 +1,4 @@
-<div class="flickr flickr-photoset">
+<div class="flickr flickr-photoset {{params['photoset-class']}}">
     <{{params['photoset-title-tag']}} class="flickr-photoset-title">{{ photoset.title() }}</{{params['photoset-title-tag']}}>
     {% if photoset.description() %}
     <{{params['photoset-description-tag']}} class="flickr-photoset-description">{{ photoset.description() }}</{{params['photoset-description-tag']}}>
