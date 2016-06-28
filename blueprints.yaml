@@ -33,12 +33,25 @@ form:
       type: text
       size: medium
       label: Flickr API Key
+      validate:
+        required: true
     flickr_api_secret:
       type: text
       size: medium
       label: Flickr API Key
+      validate:
+        required: true
     flickr_user_id:
       type: text
       size: medium
       label: Flickr User ID
-
+      validate:
+        required: true
+    flickr_cache_duration:
+      type: text
+      size: small
+      label: Flickr requests cache duration (seconds)
+      validate:
+        required: true
+        type: number
+        min: 0

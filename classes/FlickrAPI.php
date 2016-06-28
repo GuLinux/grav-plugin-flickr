@@ -25,6 +25,7 @@ class FlickrAPI
     protected $grav;
     protected $config;
     protected $cache;
+    protected $cache_duration;
 
     /**
      * set some instance variable states
@@ -36,6 +37,7 @@ class FlickrAPI
         $this->key = $this->config->get('plugins.flickr.flickr_api_key');
         $this->secret = $this->config->get('plugins.flickr.flickr_api_secret');        
         $this->user_id = $this->config->get('plugins.flickr.flickr_user_id');        
+        $this->cache_duration = $this->config->get('plugins.flickr.flickr_cache_duration');        
         $this->cache = new Cache($this->grav);
     }
 
@@ -70,15 +72,19 @@ class FlickrAPI
     
     private function request($params) {
         $url = 'https://api.flickr.com/services/rest/?' . http_build_query(array_merge($params, ['api_key' => $this->key, 'format' => 'php_serial', 'user_id' => $this->user_id]));
-        $obj = $this->cache->fetch($url);
-        if($obj) {
-            return $obj;
+        if($this->cache_duration > 0) {
+            $obj = $this->cache->fetch($url);
+            if($obj) {
+                return $obj;
+            }
         }
         $obj = unserialize(Response::get($url));
         if($obj["stat"] != "ok") {
             throw new FlickrAPIException($obj);
         }
-        $this->cache->save($url, $obj, 2 * 60 * 60);
+        if($this->cache_duration > 0) {
+            $this->cache->save($url, $obj, $this->cache_duration);
+        }
         return $obj;
     }
     
