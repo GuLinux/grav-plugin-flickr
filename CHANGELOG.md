@@ -1,3 +1,9 @@
+# v1.0.4
+## 28/06/2016
+
+1. [](#new)
+    * Version bump: forgot to update blueprint
+
 # v1.0.3
 ## 28/06/2016
 
