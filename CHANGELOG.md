@@ -1,3 +1,9 @@
+# v1.0.3
+## 28/06/2016
+
+1. [](#new)
+    * Version bump to force update on grav plugins page
+
 # v1.0.2
 ## 28/06/2016
 
