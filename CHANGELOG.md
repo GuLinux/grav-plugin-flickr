@@ -1,5 +1,6 @@
 # v1.0.5
 ## 29/11/2016
+
 1. [](#bugfix)
     * Fix wrong path generated for flickr link on photo shortcode
     * Fix secret shown as API key in blueprint
