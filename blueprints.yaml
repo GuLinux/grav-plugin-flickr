@@ -38,7 +38,7 @@ form:
     flickr_api_secret:
       type: text
       size: medium
-      label: Flickr API Key
+      label: Flickr API Secret
       validate:
         required: true
     flickr_user_id:

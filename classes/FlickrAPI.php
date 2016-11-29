@@ -55,7 +55,7 @@ class FlickrAPI
     
     public function photo($id)
     {
-        $info = $this->request( ['method' => 'flickr.photos.getInfo', 'photo_id' => $id ])['photo'];        
+        $info = $this->request( ['method' => 'flickr.photos.getInfo', 'photo_id' => $id ])['photo'];
         return new Photo($info, $this);
     }
     

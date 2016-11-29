@@ -36,7 +36,7 @@ class Photo
     }
     
     public function flickrPage() {
-        return 'https://www.flickr.com/photos/' . $this->info['ownername'] . '/' . $this->info['id'];
+        return 'https://www.flickr.com/photos/' . $this->username() . '/' . $this->info['id'];
     }
     
     public function description() {
@@ -45,6 +45,12 @@ class Photo
     
     private function content($val) {
         return is_array($val) ? $val['_content'] : $val;
+    }
+    
+    private function username() {
+        if(array_key_exists ('ownername', $this->info))
+            return $this->info['ownername'];
+        return $this->info['owner']['path_alias'];
     }
 }
  
