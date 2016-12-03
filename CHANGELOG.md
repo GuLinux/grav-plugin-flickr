@@ -1,3 +1,9 @@
+# v1.0.6
+## 3/12/2016
+
+1. [](#bugfix)
+    * Fix compatibility with php < 5.6
+
 # v1.0.5
 ## 29/11/2016
 
