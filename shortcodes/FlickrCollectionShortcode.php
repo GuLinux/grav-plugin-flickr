@@ -17,7 +17,7 @@ class FlickrCollectionShortcode extends Shortcode
             $content = $sc->getContent();
             $id = $sc->getParameter('id', '');
             $api = new FlickrAPI();
-            $params = array_merge(FlickrCommons::DEFAULT_PARAMS, $sc->getParameters());
+            $params = array_merge(FlickrCommons::defaultParams(), $sc->getParameters());
             try {
                 $collection = $api->collection($id );
                 $output = $this->twig->processTemplate('partials/flickr-collection.html.twig', [

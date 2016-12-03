@@ -17,7 +17,7 @@ class FlickrPhotosetShortcode extends Shortcode
             $content = $sc->getContent();
             $id = $sc->getParameter('id', '');
             $api = new FlickrAPI();
-            $params = array_merge(FlickrCommons::DEFAULT_PARAMS, $sc->getParameters());
+            $params = array_merge(FlickrCommons::defaultParams(), $sc->getParameters());
             try {
                 $photoset = $api->photoset($id, $params );
                 $output = $this->twig->processTemplate('partials/flickr-photoset.html.twig', [
